@@ -3,8 +3,6 @@
 namespace App\Actions\Fortify;
 
 use App\Models\User;
-use App\Models\UserDetails;
-use App\Models\Doctor;  // Ensure you have imported the Doctor model
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
@@ -28,20 +26,10 @@ class CreateNewUser implements CreatesNewUsers
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
         ])->validate();
 
-        $user =  User::create([
+        return User::create([
             'name' => $input['name'],
             'email' => $input['email'],
-            'type' => 'doctor',
             'password' => Hash::make($input['password']),
         ]);
-
-
-        $doctorInfo = Doctor::create([
-            'doc_id' => $user->id,
-            'status' => 'active',
-        ]);
-
-
-        return $user;
     }
 }
