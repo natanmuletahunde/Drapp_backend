@@ -52,6 +52,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+    public function doctor(){
+         return $this->hasOne(Doctor::class, 'doc_id');
+    }
+    public function user_details(){
+        return $this->hasOne(UserDetails::class, 'user_id');
+   }
 
     /**
      * Get the attributes that should be cast.
