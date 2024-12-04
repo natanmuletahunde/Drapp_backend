@@ -15,7 +15,7 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
      *
      * @param  array<string, mixed>  $input
      */
-    public function update(User $user, array $input): void
+    public function update(\Illuminate\Foundation\Auth\User $user, array $input): void
     {
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
