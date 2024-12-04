@@ -86,15 +86,17 @@
                 {{ __('Experience') }}
             </label>
 
-            <!-- Textarea for Experience -->
-            <textarea
+            <!-- Input for Experience (Only Numbers) -->
+            <input
                 id="experience"
                 name="experience"
-                rows="4"
-                class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                type="number"
+                class="mt-1 block w-full max-w-xs border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
                 wire:model.defer="state.experience"
-                placeholder="Describe your experience"></textarea>
-
+                placeholder="Enter your experience in years"
+                min="0" 
+            step="1" 
+            />
             <!-- Error Message -->
             @error('experience')
             <p class="mt-2 text-sm text-red-600">
@@ -102,31 +104,31 @@
             </p>
             @enderror
         </div>
+
         <!-- category -->
 
         <div class="col-span-6 sm:col-span-4">
-    <!-- Label -->
-    <label for="category" class="block font-medium text-sm text-gray-700">
-        {{ __('Category') }}
-    </label>
+            <!-- Label -->
+            <label for="category" class="block font-medium text-sm text-gray-700">
+                {{ __('Category') }}
+            </label>
 
-    <!-- Textarea for Category -->
-    <textarea 
-        id="category" 
-        name="category" 
-        rows="3" 
-        class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-        wire:model.defer="state.category" 
-        placeholder="Enter category details"
-    ></textarea>
+            <!-- Textarea for Category -->
+            <textarea
+                id="category"
+                name="category"
+                rows="3"
+                class="mt-1 block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
+                wire:model.defer="state.category"
+                placeholder="Enter category details"></textarea>
 
-    <!-- Error Message -->
-    @error('category')
-        <p class="mt-2 text-sm text-red-600">
-            {{ $message }}
-        </p>
-    @enderror
-</div>
+            <!-- Error Message -->
+            @error('category')
+            <p class="mt-2 text-sm text-red-600">
+                {{ $message }}
+            </p>
+            @enderror
+        </div>
 
 
         <!-- Email -->
